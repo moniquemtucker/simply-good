@@ -1,0 +1,126 @@
+.container-fluid {
+    color: white;
+}
+
+.navbar, .navbar-default {
+    padding-top: 30px;
+    height: 720px;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.25) 0%,rgba(255,255,255,0.25) 100%),
+        url('/simply-good/images/simply-good-home.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+/*URL to image: https://unsplash.com/photos/hv1MrBzGGNY/download*/
+
+.home-main {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin: 0 auto;
+    width: 75%;
+}
+
+#home-brand {
+    font-size: 80px;
+    padding-top: 50px;
+}
+
+.home-main p {
+    font-size: 48px;
+    margin: 0 auto;
+    padding: 200px 0 100px 0;
+}
+
+#home-sign-up-btn {
+    background-image: linear-gradient(to bottom, #F9B31C 0px, #FF9900 100%);
+    border-color: #F9B31C;
+    background-color: #F9B31C;
+    margin-right: 20px;
+}
+
+#home-login-btn {
+    margin-left: 10px;
+}
+
+.home-main small {
+    font-size: 16px;
+}
+
+.home-main h4 {
+    padding-top: 30px;
+    font-size: 26px;
+}
+
+.home-main h4 a {
+    color: white;
+    font-size: 18px;
+}
+
+/*login page styling */
+
+.login-container {
+    width: 40%;
+    margin-top: 40px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*signup page styling */
+
+.signup-container {
+    width: 40%;
+    margin-top: 40px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* diary page styling */
+#diary-body {
+    background-color: #f7f7f7;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#diary-container {
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+    color: #f3b065;
+}
+
+#diary-header h2 {
+    font-size: 50px;
+    padding-top: 20px;
+}
+
+#diary-calendar {
+    text-align: center;
+    font-size: 24px;
+    font-variant: small-caps;
+    font-weight: 600;
+    padding: 20px 0 20px 0;
+}
+
+#diary-contents {
+    text-align: left;
+    font-size: 28px;
+    border: 3px solid #f3b065;
+    border-radius: 25px;
+    padding: 20px 0 20px 0;
+}
+
+#diary-contents li {
+    padding: 10px;
+    list-style-type: none;
+    display: inline;
+    vertical-align: middle;
+    font-weight: 300;
+}
+
+#diary-footer {
+    padding-bottom: 40px;
+}
+
+#diary-footer span {
+    font-size: 42px;
+    padding: 20px 30px 0 0;
+    margin-top: 20px;
+}
