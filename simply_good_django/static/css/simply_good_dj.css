@@ -1,0 +1,80 @@
+.navbar, .navbar-default {
+    padding-top: 30px;
+    height: 1000px;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.25) 0%,rgba(255,255,255,0.25) 100%),
+        url("/static/images/simply-good-home-low.jpeg") no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+/*URL to image: https://unsplash.com/photos/hv1MrBzGGNY/download*/
+
+.home-main {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin: 0 auto;
+    width: 75%;
+}
+
+#home-brand {
+    font-size: 80px;
+    padding-top: 50px;
+}
+
+#home-tag-line {
+    font-size: 48px;
+    margin: 0 auto;
+    padding: 200px 0 100px 0;
+}
+
+#home-sign-up-btn {
+    background-image: linear-gradient(to bottom, #F9B31C 0px, #FF9900 100%);
+    border-color: #F9B31C;
+    background-color: #F9B31C;
+    margin-right: 20px;
+}
+
+#home-login-btn {
+    margin-left: 10px;
+}
+
+.home-main small {
+    font-size: 16px;
+}
+
+.home-main h4 {
+    padding-top: 30px;
+    font-size: 26px;
+}
+
+.home-main h4 a {
+    color: white;
+    font-size: 18px;
+}
+
+.modal-crispy .modal-dialog {
+    color: grey;
+    text-align: left;
+    width: 30%;
+}
+
+/*#home-signup {*/
+    /*color: grey;*/
+    /*margin: 0 auto;*/
+    /*text-align: center;*/
+/*}*/
+
+#home-signup-pop {
+    background-color: white;
+    width: 300px;
+    height: 600px;
+}
+
+/* messages styling*/
+.messages li {
+    color: green;
+    list-style-type: none;
+    font-size: 20px;
+    padding-top: 20px;
+}
