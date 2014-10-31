@@ -112,6 +112,10 @@
     padding: 20px 0 20px 0;
 }
 
+.ionicons.ion-plus {
+    cursor: pointer;
+}
+
 #diary-contents li {
     padding: 10px;
     list-style-type: none;
@@ -120,6 +124,19 @@
     font-weight: 300;
 }
 
+.save-diary {
+    text-align: right;
+    background-color: #99CC99;
+    background-image: none;
+    border-color: #99CC99;
+    display: inline;
+}
+
+.save-diary .btn-info:hover, .save-diary .btn-info:focus {
+    background-color: green;
+    background-image: none;
+    border-color: green;
+}
 #diary-footer {
     padding-bottom: 40px;
 }
@@ -128,4 +145,86 @@
     font-size: 42px;
     padding: 20px 30px 0 0;
     margin-top: 20px;
+}
+
+/* test calendar */
+/*@import url(http://fonts.googleapis.com/css?family=Roboto:400,300);*/
+/*@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);*/
+
+/*body {*/
+    /*padding: 70px 0px;*/
+/*}*/
+
+.ionicons.ion-arrow-right-b {
+    margin-left: 0.1em;
+}
+
+.date-picker,
+.date-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.date-container {
+    padding: 0 40px;
+}
+.date-picker h2, .date-picker h4 {
+    margin: 0;
+    padding: 0;
+    /*font-family: 'Roboto', sans-serif;*/
+    font-weight: 200;
+}
+.date-container .date {
+    text-align: center;
+}
+.date-picker span.ionicons {
+    position: absolute;
+    font-size: 2em;
+    font-weight: 100;
+    padding: 8px 0 7px;
+    cursor: pointer;
+    top: 0;
+}
+.date-picker span.ionicons[data-type="subtract"] {
+    left: 0;
+}
+.date-picker span.ionicons[data-type="add"] {
+    right: 0;
+}
+.date-picker span[data-toggle="calendar"] {
+    display: block;
+    position: absolute;
+    top: -7px;
+    right: 45px;
+    font-size: 1em !important;
+    cursor: pointer;
+}
+
+.date-picker .input-datepicker {
+    display: none;
+    position: absolute;
+    top: 50%;
+    margin-top: -17px;
+    width:100%;
+}
+.date-picker .input-datepicker.show-input {
+    display: table;
+}
+
+@media (min-width: 768px) and (max-width: 1010px) {
+    .date-picker h2{
+        font-size: 1.5em;
+        font-weight: 400;
+    }
+    .date-picker h4 {
+        font-size: 1.1em;
+    }
+    .date-picker span.ionicons {
+        font-size: 3em;
+    }
 }
