@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block register %}
+
+
+<div class="modal fade modal-crispy" id="register-modal" tabindex="-1" role="dialog"
+    aria-labelledby="basicModal" aria-hidden="true">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+       <h4 class="modal-title">register for simply good</h4>
+     </div>
+    <div class="modal-body">
+    {% for field in form %}
+    {{field.error}}
+    {% endfor %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+<input type="submit" value="Register" />
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li>{% if message.tags %} {% endif %}{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+</form>
+
+    </div>
+   </div>
+ </div>
+</div>
+
+
+{% endblock register %}
