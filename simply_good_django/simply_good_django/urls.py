@@ -7,6 +7,17 @@ urlpatterns = patterns('',
     # url(r'^$', 'simply_good_django.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     # from exercise: url(r'^$', 'signups.views.home', name='home'),
-    url(r'^$', include('signups.urls', namespace='signups')),
+    #for signups url(r'^$', include('signups.urls', namespace='signups')),
     url(r'^admin/', include(admin.site.urls)),
+
+    #urls for registering
+    url(r'^$', 'simply_good_django.views.register', name='register'),
+    url(r'^register_success/$', 'simply_good_django.views.register_success', name='register_success'),
+
+    # authentication urls
+    url(r'^login/$', 'simply_good_django.views.login', name='login'),
+    url(r'^authenticate/$', 'simply_good_django.views.authenticate', name='authenticate'),
+    # url(r'^logout/$', 'simply_good_django.views.logout', name='logout'),
+    url(r'^login_success/$', 'simply_good_django.views.login_success', name='login_success'),
+    url(r'^login_invalid/$', 'simply_good_django.views.login_invalid', name='login_invalid'),    # url(r'^invalid/$', 'simply_good_django.views.invalid', name='inval
 )
