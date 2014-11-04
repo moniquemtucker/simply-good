@@ -17,6 +17,7 @@ def register(request):
             return HttpResponseRedirect('/register_success')
         else:
             print SGRegisterForm.errors
+            return HttpResponseRedirect('/register_error')
     else:
         form = SGRegisterForm()
     token = {}
@@ -28,6 +29,10 @@ def register(request):
 
 def register_success(request):
     return render_to_response('register_success.html')
+
+
+def register_error(request):
+    return render_to_response('register_error.html')
 
 
 # Login views

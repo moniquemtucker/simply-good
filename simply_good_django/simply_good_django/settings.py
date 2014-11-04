@@ -11,7 +11,12 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-# STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
+# just added paths
+SETTINGS_DIR = os.path.dirname(__file__)
+PROJECT_PATH = os.path.abspath(os.path.join(SETTINGS_DIR, os.pardir))
+TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
+STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
+MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -36,8 +41,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
-    'signups',
+    # 'crispy_forms',
+    # 'signups',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -84,16 +89,24 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/staticfiles/'
+# STATIC_ROOT = '/staticfiles/'
 
 # STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, "templates"),
+STATICFILES_DIRS = (
+    STATIC_PATH,
 )
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
+TEMPLATE_DIRS = (
+    TEMPLATE_PATH,
 )
+
+# TEMPLATE_DIRS = (
+#     os.path.join(BASE_DIR, "templates"),
+# )
+#
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, "static"),
+# )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap'

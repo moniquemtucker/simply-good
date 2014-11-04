@@ -66,6 +66,15 @@
 /*}*/
 
 
+#content-block-style {
+    padding-top: 200px;
+    font-size: 18px;
+}
+
+#content-block-style input {
+    color: black;
+}
+
 /* messages styling*/
 .messages li {
     color: green;

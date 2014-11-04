@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>simply good. nutrition simplified.</title>
+    <title>{% block title %} simply good. nutrition simplified. {% endblock title %} </title>
 
 
     <!-- get JQuery -->
@@ -28,7 +28,7 @@
     <!-- Custom styles for this template -->
     <link href='http://fonts.googleapis.com/css?family=Montserrat|Lato|Open+Sans|Droid+Sans' rel='stylesheet' type='text/css'>
     <!--<link href="/static/simply_good.dj.css" rel="stylesheet">-->
-    <link rel="stylesheet" type="text/css" href="static/css/simply_good_dj.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/simply_good_dj.css" />
     <script src="static/js/simply_good_dj.js" type="text/javascript"></script>
   </head>
 
@@ -37,9 +37,10 @@
     <div class="container-fluid">
       <div class="home-main"> <!--large main picture-->
         <h1 id="home-brand">simply good</h1>
-        <p id="home-tag-line">because keeping track of the whole foods you eat should be simple.</p>
+         <div id="content-block-style">
          {% block content %}
          {% endblock content %}
+         </div>
       </div>
 
 
