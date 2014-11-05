@@ -3,6 +3,7 @@
     height: 800px;
     width: 100%;
     background: linear-gradient(to bottom, rgba(255,255,255,0.25) 0%,rgba(255,255,255,0.25) 100%),
+        /*url("{% static "images/simply-good-home-low.jpeg" %}") no-repeat center center fixed  ;*/
         url("/static/images/simply-good-home-low.jpeg") no-repeat center center fixed;
     background-size: cover;
     color: white;
@@ -53,10 +54,18 @@
     font-size: 18px;
 }
 
-.modal-crispy .modal-dialog {
+.modal-form .modal-dialog {
     color: grey;
-    text-align: left;
+    /*text-align: left;*/
     width: 30%;
+}
+
+#register-modal {
+    text-align: left;
+}
+
+#login-modal {
+    text-align: center;
 }
 
 /*#home-signup {*/
@@ -80,5 +89,10 @@
     color: green;
     list-style-type: none;
     font-size: 20px;
+    padding-top: 20px;
+}
+
+/* */
+#login-login-btn {
     padding-top: 20px;
 }
