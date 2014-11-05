@@ -7,6 +7,10 @@ from django.contrib import messages
 from .forms import SGRegisterForm
 
 
+def home(request):
+    return render_to_response('base.html')
+
+
 # Registration Views
 def register(request):
 
@@ -17,7 +21,7 @@ def register(request):
             return HttpResponseRedirect('/register_success')
         else:
             print SGRegisterForm.errors
-            return HttpResponseRedirect('/register_error')
+            # return HttpResponseRedirect('/register_error')
     else:
         form = SGRegisterForm()
     token = {}

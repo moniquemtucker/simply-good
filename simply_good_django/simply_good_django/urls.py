@@ -10,12 +10,12 @@ urlpatterns = patterns('',
     #for signups
     # url(r'^$', include('signups.urls', namespace='signups')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', 'simply_good_django.views.home', name='home'),
 
     #urls for registering
-    url(r'^$', 'simply_good_django.views.register', name='register'),
-    # url(r'^register2/$', 'simply_good_django.views.register', name='register2'),
+    url(r'^register/$', 'simply_good_django.views.register', name='register'),
     url(r'^register_success/$', 'simply_good_django.views.register_success', name='register_success'),
-    url(r'^register_error/$', 'simply_good_django.views.register_error', name='register_error'),
+    # url(r'^register_error/$', 'simply_good_django.views.register_error', name='register_error'),
 
     # authentication urls
     url(r'^login/$', 'simply_good_django.views.login', name='login'),
