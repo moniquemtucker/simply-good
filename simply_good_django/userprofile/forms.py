@@ -9,4 +9,4 @@ from .models import UserProfile
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('sex', 'age', 'weight')
+        fields = ('first_name', 'last_name','gender', 'age', 'weight')

@@ -58,7 +58,7 @@ def authenticate(request):
 
 
 def login_success(request):
-    return render_to_response('login_success.html', {'first_name': request.user.first_name})
+    return render_to_response('login_success.html', {'username': request.user.username})
 
 
 def login_invalid(request):

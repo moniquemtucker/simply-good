@@ -10,25 +10,19 @@ class SGRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2')
+        fields = ('username', 'email', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
         super(SGRegisterForm, self).__init__(*args, **kwargs)
         self.fields['email'].label = "Email"
-        # self.fields['password1'].label = "Password"
-        # self.fields['password2'].label = "Confirm Password"
-        for field_name in self.fields:
-            field = self.fields.get(field_name)
-            if field:
-                field.widget = forms.TextInput(attrs={'placeholder': field.label})
+        self.fields.get('username').widget = forms.TextInput(attrs={'placeholder': 'Enter your username'})
+        self.fields.get('email').widget = forms.TextInput(attrs={'placeholder': 'Enter your email address'})
 
     def __unicode__(self):
         return self.username
 
     def save(self, commit=True):
         user = super(SGRegisterForm, self).save(commit=False)
-        user.first_name = self.cleaned_data['first_name']
-        user.last_name = self.cleaned_data['last_name']
         user.username = self.cleaned_data['username']
         user.email = self.cleaned_data['email']
         user.set_password(self.cleaned_data['password1'])
