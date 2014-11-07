@@ -1,6 +1,6 @@
 {% extends "basetwo.html" %}
 
 {% block content %}
-<h2>{{first_name}}, you have successfully logged into simply good!</h2>
-
+<h2>{{ first_name|capfirst }}, you have successfully logged into simply good!</h2>
+<p><a href="/profile/"> Update your profile </a></p>
 {% endblock content %}

@@ -43,6 +43,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # 'crispy_forms',
     # 'signups',
+    # 'person',
+    # 'diary',
+    'userprofile',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -91,7 +94,6 @@ STATIC_URL = '/static/'
 
 # STATIC_ROOT = '/staticfiles/'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 STATICFILES_DIRS = (
     STATIC_PATH,
@@ -100,13 +102,5 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
     TEMPLATE_PATH,
 )
-
-# TEMPLATE_DIRS = (
-#     os.path.join(BASE_DIR, "templates"),
-# )
-#
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, "static"),
-# )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap'

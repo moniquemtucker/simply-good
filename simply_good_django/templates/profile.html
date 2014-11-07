@@ -1,0 +1,19 @@
+{% extends 'basetwo.html' %}
+
+{% block content %}
+
+<h2>Simply Good profile page</h2>
+
+<p>Please fill out the following fields to complete your profile:</p>
+
+    {% for field in form %}
+      {{ field.error }}
+    {% endfor %}
+
+    <form action="" method="post">
+       {% csrf_token %}
+       {{ form.as_p }}
+     <input type="submit" value="Update" />
+    </form>
+
+{% endblock content %}
