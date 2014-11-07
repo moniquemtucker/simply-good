@@ -8,8 +8,6 @@ from forms import UserProfileForm
 
 # Create your views here.
 
-#initial view
-
 @login_required
 def user_profile(request):
     if request.method == 'POST':
@@ -28,5 +26,3 @@ def user_profile(request):
     args['form'] = form
 
     return render_to_response('profile.html', args)
-
-#update view

@@ -63,3 +63,8 @@ def login_success(request):
 
 def login_invalid(request):
     return render_to_response('login_invalid.html')
+
+
+def logout(request):
+    auth.logout(request)
+    return render_to_response('logout.html')

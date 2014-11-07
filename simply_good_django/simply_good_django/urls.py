@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     # authentication urls
     url(r'^login/$', 'simply_good_django.views.login', name='login'),
     url(r'^authenticate/$', 'simply_good_django.views.authenticate', name='authenticate'),
-    # url(r'^logout/$', 'simply_good_django.views.logout', name='logout'),
+    url(r'^logout/$', 'simply_good_django.views.logout', name='logout'),
     url(r'^login_success/$', 'simply_good_django.views.login_success', name='login_success'),
     url(r'^login_invalid/$', 'simply_good_django.views.login_invalid', name='login_invalid'),
 

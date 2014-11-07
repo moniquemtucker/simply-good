@@ -96,3 +96,12 @@
 #login-login-btn {
     padding-top: 20px;
 }
+#logout-btn-container {
+    text-align: right;
+}
+
+#logout-btn {
+    border: 1px solid #FFF;
+    color: #FFF;
+    background: none repeat scroll 0 0 transparent;
+}
