@@ -12,8 +12,6 @@ urlpatterns = patterns('',
     # url(r'^$', include('signups.urls', namespace='signups')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'simply_good_django.views.home', name='home'),
-    #profile page
-    url(r'^profile/', include('userprofile.urls')),
 
     #urls for registering
     url(r'^register/$', 'simply_good_django.views.register', name='register'),
@@ -26,4 +24,8 @@ urlpatterns = patterns('',
     url(r'^logout/$', 'simply_good_django.views.logout', name='logout'),
     url(r'^login_success/$', 'simply_good_django.views.login_success', name='login_success'),
     url(r'^login_invalid/$', 'simply_good_django.views.login_invalid', name='login_invalid'),
+
+    #for users
+    url(r'^profile/', include('userprofile.urls')),
+    url(r'^diary/', include('diary.urls')),
 )
