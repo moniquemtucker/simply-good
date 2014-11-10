@@ -1,0 +1,23 @@
+__TO DO LIST FOR SIMPLY GOOD__
+
+FEATURES
+-- Ability to add/remove portion sizes and save to database
+-- Ability to save diary entries based on date
+-- Ability to view weekly trend
+
+TO ADD
+-- Testing
+-- Move to PostgreSQL
+
+STYLING
+-- Change the registration form layout
+-- Change the login form layout
+-- Change the profile layout
+-- Change the diary layout
+
+ADDITIONAL
+-- Add description of app on the homepage
+-- Add help/guidelines page
+
+NICE TO HAVES
+-- "Forget password" option
