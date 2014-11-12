@@ -2,20 +2,76 @@
  * Created by student on 11/8/14.
  */
 
+//function myFunction() {
+//    var x = document.getElementsByClassName("wf-count");
+//    var wf_total = document.getElementsByClassName('wf-count').length;
+//    x[0].innerHTML = wf_total;
+//}
+
+
 $(document).ready(function() {
-    $(".add-portion-veg").click(function () {
-        $("#diary-veg").append("<li><span class='ionicons ion-ios7-tennisball-outline'></span></li>");
+    //ajax to add portion
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
     });
-//    $(".add-portion-pro").click(function () {
-//        $("#diary-pro").append("<li><span class='ionicons ion-ios7-tennisball-outline'></span></li>");
-//    });
-//    $(".add-portion-fru").click(function () {
-//        $("#diary-fru").append("<li><span class='ionicons ion-ios7-tennisball-outline'></span></li>");
-//    });
+
+    function addPortion (foodId) {
+        $.ajax({
+            type: "POST",
+            url: "/diary/",
+            data: {"foodId": foodId, "vote": "up"},
+            success: function (data) {
+                $("#blog-vote-up-" + foodId).show();
+                $("#blog-vote-down-" + foodId).hide();
+                $("#upvotes").html(data.votes)
+            }
+        });
+        return false;
+}
+
+    $(".add-portion-whole-foods").click(function () {
+        var foodId = parseInt(this.id.split("-")[3]);
+        if (this.id.split("-")[2] === "add") {
+            return addPortion(foodId);
+        }
+    });
+
+
+
+    $(".add-portion-whole-foods").click(function () {
+        $("#diary-whole-foods").append("<li><span class='ionicons ion-ios7-tennisball-outline wf-count'></span></li>");
+    });
     $(".add-portion-other").click(function () {
         $("#diary-other").append("<li><span class='ionicons ion-ios7-tennisball-outline'></span></li>");
     });
-//add a counter and if statement to format; pop ups for goals achieved
+
+//add a Python Counter() and an if statement to format; pop ups for goals achieved
 
     // test calendar
     $('.date-picker').each(function () {

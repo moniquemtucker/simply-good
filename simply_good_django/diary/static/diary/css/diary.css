@@ -44,6 +44,17 @@
     font-weight: 300;
 }
 
+#diary-notes {
+    width: 90%;
+    margin: 0 auto;
+    padding-left: 15px;
+    border-top: 1px dotted #f3b065;
+}
+
+#notes-input {
+
+}
+
 .save-diary {
     text-align: right;
     background-color: #99CC99;
@@ -57,12 +68,13 @@
     background-image: none;
     border-color: green;
 }
+
 #diary-footer {
     padding-bottom: 40px;
 }
 
 #diary-footer a {
-    color: #F9B31C;
+    color: #f3b065;
 }
 
 #diary-footer span {

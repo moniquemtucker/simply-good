@@ -34,10 +34,10 @@
             <div class="col-sm-4 col-sm-offset-2">
               <h2>diary  <span class="fa fa-cutlery"></span></h2>
               <hr/>
-              <div class="date-picker"  data-date="2014/11/07" data-keyboard="true">
+              <div class="date-picker" data-keyboard="true">
                 <div class="date-container pull-left">
-                    <h4 class="weekday">Thursday</h4>
-                    <h2 class="date">October 30th</h2>
+                    <h4 class="weekday">Friday</h4>
+                    <h2 class="date">November 7th</h2>
                     <h4 class="year pull-right">2014</h4>
                 </div>
                 <span data-toggle="datepicker" data-type="subtract" class="ionicons ion-arrow-left-b"></span>
@@ -54,28 +54,24 @@
         </div>
     </div>
       <div id="diary-contents">
-          <ul id="diary-veg">
-            <li>Whole Foods</li>
-            <li><span class="ionicons ion-plus add-portion-veg"></span></li>
-            {% for food in foods_eaten %}
-            <li><span class="ionicons ion-ios7-tennisball-outline" data-vote="upvote" data-blog-id="{{ object.id }}"></span></li>
-            <li>{{ food.created }}</li>
+          {% csrf_token %}
+          <ul id="diary-whole-foods">
+            <li>whole foods</li>
+            <li><span class="ionicons ion-plus add-portion-whole-foods" ></span></li>
+            {% for object in object_list %}
+            <li><span class="ionicons ion-ios7-tennisball-outline" id="diary-portion-add-{{ object.id }}"
+              data-portion="add-portion"></span>{{ food.created }}</li>
             {% endfor %}
            </ul>
-
-          <!--<ul id="diary-pro">-->
-            <!--<li>Protein</li>-->
-            <!--<li><span class="ionicons ion-plus add-portion-pro"></span></li>-->
-          <!--</ul>-->
-          <!--<ul id="diary-fru">-->
-            <!--<li>Fruit</li>-->
-            <!--<li><span class="ionicons ion-plus add-portion-fru"></span></li>-->
-          <!--</ul>-->
           <ul id="diary-other">
-            <li>Processed Foods</li>
+            <li>processed foods</li>
             <li><span class="ionicons ion-plus add-portion-other"></span></li>
           </ul>
           <!--<button type="button" class="btn btn-info save-diary">save diary</button>-->
+          <div id="diary-notes"><p>notes</p>
+              <!--<button onclick="myFunction()">Try it</button>-->
+             <textarea rows="2" cols="20" id="notes-input"></textarea>
+          </div>
       </div>
     <div id="diary-footer">
       <a href="#"><span class="ionicons ion-home"></span></a>
