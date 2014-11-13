@@ -106,4 +106,43 @@
     background: none repeat scroll 0 0 transparent;
 }
 
+/*#home-two {*/
+    /*background: linear-gradient(to bottom, rgba(255,255,255,0.25) 0%,rgba(255,255,255,0.25) 100%),*/
+    /*url("https://unsplash.com/photos/FjjUVn_KHLU/download") no-repeat center fixed;*/
+    /*background-size: cover;*/
+/*}*/
 
+#home-two {
+    font-family: 'Montserrat', sans-serif;
+    width: 40%;
+    text-align: left;
+    margin: 0 auto;
+    color: #FFF;
+}
+
+.home-two-copy {
+    font-size: 20px;
+    padding: 20px 0 20px 0;
+}
+
+/*#home-three-container {*/
+    /*background: linear-gradient(to bottom, rgba(255,255,255,0.25) 0%,rgba(255,255,255,0.25) 100%),*/
+    /*url("http://sweetgreen.com/content/uploads/2014/07/tumblr-header-7.9-1.gif") no-repeat center fixed;*/
+/*}*/
+
+#home-three {
+    font-family: 'Montserrat', sans-serif;
+    width: 40%;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.home-three-copy {
+    font-size: 20px;
+    padding: 20px 0 20px 0;
+    color: #FFF;
+}
+
+#pp-nav li .active span, .pp-slidesNav .active span {
+    background: none repeat scroll 0 0 #FFF;
+}

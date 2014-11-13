@@ -1,7 +1,10 @@
 /* diary page styling */
 #diary-body {
-    background-color: #f7f7f7;
+    /*background-color: #f7f7f7;*/
     font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.4) 100%),
+    url("https://unsplash.com/photos/cZhUxIQjILg/download") no-repeat center fixed;
+    background-size: cover;
 }
 
 #diary-container {

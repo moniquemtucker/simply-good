@@ -9,4 +9,16 @@
         $('#login-modal').modal('show');
     });
 
+$(document).ready(function() {
+//    $('#pagepiling').pagepiling();
 
+    $('#pagepiling').pagepiling({
+    sectionsColor: ['#f2f2f2', '#00853E', '#EF4B26'],
+    navigation: {
+    'textColor': '#FFF',
+    'bulletsColor': '#FFF',
+    'position': 'right',
+    'tooltips': ['login/sign up', 'principles', 'goals']
+}
+});
+});
