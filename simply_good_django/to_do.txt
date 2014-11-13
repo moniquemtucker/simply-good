@@ -1,11 +1,13 @@
 __TO DO LIST FOR SIMPLY GOOD__
 
 FEATURES
--- Ability to add/remove portion sizes and save to database
+-- Ability to add portion size and save to database
+-- Ability to remove portion size and save to database
 -- Ability to save diary entries based on date
 -- Ability to view weekly trend
 
 TO ADD
+-- Change to be 1/4 through 1 portion size
 -- Testing
 -- Move to PostgreSQL
 

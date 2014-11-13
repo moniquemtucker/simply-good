@@ -5,7 +5,9 @@ from django.contrib.auth.decorators import login_required
 
 from forms import UserProfileForm
 
-
+import json
+from django.http import HttpResponse
+from .models import UserProfile
 # Create your views here.
 
 @login_required
@@ -14,7 +16,7 @@ def user_profile(request):
         form = UserProfileForm(request.POST, instance=request.user.profile)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/login_success/')
+            return HttpResponseRedirect('/diary/')
     else:
         user = request.user
         profile = user.profile
@@ -26,3 +28,19 @@ def user_profile(request):
     args['form'] = form
 
     return render_to_response('profile.html', args)
+
+
+# def list_api(request):
+#     item_list = UserProfile.objects.all()
+#     output_list = []
+#
+#     for item in item_list:
+#         output_item = {}
+#         output_item["system_id"] = item.id
+#         output_item["first_name"] = item.first_name
+#         output_list.append(output_item)
+#
+#     return HttpResponse(
+#         json.dumps(output_list),
+#         content_type="application/json"
+#     )

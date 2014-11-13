@@ -10,3 +10,6 @@ def diary(request):
     return render_to_response('diary/base_diary.html')
 
 # day based archive view
+
+
+

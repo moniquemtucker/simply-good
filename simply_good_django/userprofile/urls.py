@@ -6,4 +6,6 @@ from userprofile import views
 
 urlpatterns = patterns('',
     url(r'^$', views.user_profile, name='userprofile'),
+    # url(r'^$', views.list_api, name='list_api'),
+
 )

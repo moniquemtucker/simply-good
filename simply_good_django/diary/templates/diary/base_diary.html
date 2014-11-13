@@ -34,10 +34,10 @@
             <div class="col-sm-4 col-sm-offset-2">
               <h2>diary  <span class="fa fa-cutlery"></span></h2>
               <hr/>
-              <div class="date-picker" data-keyboard="true">
+              <div class="date-picker" data-keyboard="false">
                 <div class="date-container pull-left">
                     <h4 class="weekday">Friday</h4>
-                    <h2 class="date">November 7th</h2>
+                    <h2 class="date" id="date-test">November 7th</h2>
                     <h4 class="year pull-right">2014</h4>
                 </div>
                 <span data-toggle="datepicker" data-type="subtract" class="ionicons ion-arrow-left-b"></span>
@@ -54,24 +54,30 @@
         </div>
     </div>
       <div id="diary-contents">
-          {% csrf_token %}
+      <form action="/authenticate/" method="post">
+        {% csrf_token %}
+          <input type="date" name="entry-date" value="" id="entry-date" placeholder="YYYY/MM/DD"
+                 style="margin-left:50px; width:150px; font-size: 14px; color: black">
           <ul id="diary-whole-foods">
             <li>whole foods</li>
             <li><span class="ionicons ion-plus add-portion-whole-foods" ></span></li>
-            {% for object in object_list %}
-            <li><span class="ionicons ion-ios7-tennisball-outline" id="diary-portion-add-{{ object.id }}"
-              data-portion="add-portion"></span>{{ food.created }}</li>
-            {% endfor %}
+            <!--<li><span class="ionicons ion-ios7-tennisball-outline" id="diary-portion-add-{{ object.id }}"-->
+              <!--data-portion="add-portion"></span></li>-->
+            <li><input type="number" name="wf-amt" value="" id="wf-amt" style="width:50px; font-size: 14px; color: black"></li>
            </ul>
           <ul id="diary-other">
             <li>processed foods</li>
             <li><span class="ionicons ion-plus add-portion-other"></span></li>
+            <li><input type="number" name="other-amt" value="" id="other-amt" style="width:50px; font-size: 14px; color: black"></li>
           </ul>
           <!--<button type="button" class="btn btn-info save-diary">save diary</button>-->
           <div id="diary-notes"><p>notes</p>
-              <!--<button onclick="myFunction()">Try it</button>-->
-             <textarea rows="2" cols="20" id="notes-input"></textarea>
+              <!--<button onclick="myFunction()">save</button>-->
+             <textarea rows="2" cols="20" id="notes-input" placeholder="Take any notes to help you remember this day..."
+                       wrap="hard" style="width:500px; font-size: 16px; color: black"></textarea>
+             <p id="login-login-btn"><input type="submit" class="btn btn-warning" value="save entry" /></p>
           </div>
+      </form>
       </div>
     <div id="diary-footer">
       <a href="#"><span class="ionicons ion-home"></span></a>

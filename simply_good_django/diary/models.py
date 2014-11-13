@@ -4,14 +4,14 @@ from userprofile.models import UserProfile
 
 
 # class DiaryEntry(models.Model):
-#     user_profile = models.OneToOneField(UserProfile)
-#     entry_date = models.ForeignKey(DiaryDate)
+#     user_profile = models.ForeignKey(UserProfile)
+#     entry_date = models.DateField()
 #     whole_foods = models.IntegerField(default=0)
 #     processed_foods = models.IntegerField(default=0)
 #     notes = models.TextField()
 #
 #     def __unicode__(self):
-#         return self.entry_date
+#         return "%s %s" % (self.userprofile.UserProfile, self.entry_date)
 #
 #
 # class DiaryDate(models.Model):
