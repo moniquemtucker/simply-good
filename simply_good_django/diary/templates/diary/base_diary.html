@@ -37,48 +37,38 @@
               <div class="date-picker" data-keyboard="false">
                 <div class="date-container pull-left">
                     <h4 class="weekday">Friday</h4>
-                    <h2 class="date" id="date-test">November 7th</h2>
-                    <h4 class="year pull-right">2014</h4>
+                    <h2 class="date" id="date-cal">November 7th</h2>
+                    <h4 class="year pull-right" id="year-cal">2014</h4>
                 </div>
-                <span data-toggle="datepicker" data-type="subtract" class="ionicons ion-arrow-left-b"></span>
-                <span data-toggle="datepicker" data-type="add" class="ionicons ion-arrow-right-b"></span>
+                <span data-toggle="datepicker" data-type="subtract" class="ionicons ion-arrow-left-b" id="left-cal"></span>
+                <span data-toggle="datepicker" data-type="add" class="ionicons ion-arrow-right-b" id="right-cal"></span>
                 <div class="input-group input-datepicker">
                     <input type="text" class="form-control" data-format="YYYY/MM/DD" placeholder="YYYY/MM/DD">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button">Go!</button>
                     </span>
               </div>
-              <span data-toggle="calendar" class="fa fa-calendar"></span>
+              <span data-toggle="calendar" class="fa fa-calendar" id="choose-cal"></span>
             </div>
           </div>
         </div>
     </div>
       <div id="diary-contents">
-      <form action="" method="post">
-        {% csrf_token %}
-          <input type="date" name="entry-date" value="" id="entry-date" placeholder="YYYY/MM/DD"
-                 style="margin-left:50px; width:150px; font-size: 14px; color: black">
-          <ul id="diary-whole-foods">
-            <li>whole foods</li>
-            <li><span class="ionicons ion-plus add-portion-whole-foods" ></span></li>
-            <!--<li><span class="ionicons ion-ios7-tennisball-outline" id="diary-portion-add-{{ object.id }}"-->
-              <!--data-portion="add-portion"></span></li>-->
-            <li><input type="number" name="wf-amt" value="" id="wf-amt" style="width:50px; font-size: 14px; color: black"></li>
-           </ul>
-          <ul id="diary-other">
-            <li>processed foods</li>
-            <li><span class="ionicons ion-plus add-portion-other"></span></li>
-            <li><input type="number" name="other-amt" value="" id="other-amt" style="width:50px; font-size: 14px; color: black"></li>
-          </ul>
-          <!--<button type="button" class="btn btn-info save-diary">save diary</button>-->
-          <div id="diary-notes"><p>notes</p>
-              <!--<button onclick="myFunction()">save</button>-->
-             <textarea rows="2" cols="20" id="notes-input" placeholder="Take any notes to help you remember this day..."
+        <ul id="diary-wf">
+          <li>whole foods</li>
+          <li><span class="ionicons ion-plus add-portion-wf" ></span></li>
+        </ul>
+        <ul id="diary-pf">
+          <li>processed foods</li>
+          <li><span class="ionicons ion-plus add-portion-pf"></span></li>
+        </ul>
+        <div id="diary-notes"><p>notes</p>
+          <textarea rows="2" cols="20" id="notes" placeholder="Take any notes to help you remember this day..."
                        wrap="hard" style="width:500px; font-size: 16px; color: black"></textarea>
              <p id="login-login-btn"><input type="submit" class="btn btn-warning" value="save entry" /></p>
           </div>
-      </form>
       </div>
+
     <div id="diary-footer">
       <a href="#"><span class="ionicons ion-home"></span></a>
       <a href="#"><span class="ionicons ion-help-circled"></span></a>

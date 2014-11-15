@@ -64,14 +64,31 @@ $(document).ready(function() {
 //        }
 //    });
 
-    $(".add-portion-whole-foods").click(function () {
-        $("#diary-whole-foods").append("<li><span class='ionicons ion-ios7-tennisball-outline wf-count'></span></li>");
+    //draws portion elements on click
+    $(".add-portion-wf").click(function () {
+        $("#diary-wf").append("<li><span class='ionicons ion-ios7-tennisball-outline wf-portion'></span></li>");
     });
-    $(".add-portion-other").click(function () {
-        $("#diary-other").append("<li><span class='ionicons ion-ios7-tennisball-outline'></span></li>");
+    $(".add-portion-pf").click(function () {
+        $("#diary-pf").append("<li><span class='ionicons ion-ios7-tennisball-outline pf-portion'></span></li>");
     });
+    //TO DO: add a Python Counter() and an if statement to format; pop ups for goals achieved
 
-//add a Python Counter() and an if statement to format; pop ups for goals achieved
+    //capture number of portion elements
+    var wf_total = document.getElementsByClassName('wf-portion').length;
+    var pf_total = document.getElementsByClassName('pf-portion').length;
+    var notes_total = document.getElementById("notes").value;
+
+    //capture date information and turn into ISO format
+    var active_date = document.getElementById('date-cal').innerHTML;
+    var active_year= document.getElementById('year-cal').innerHTML;
+    var active_date_array = active_date.split(" ");
+    if (active_date_array[1].length > 3){
+        var active_day = active_date_array[1].substring(0, 2);
+    }
+    else {
+        var active_day = active_date_array[1].substring(0, 1);
+    }
+
 
     // test calendar
     $('.date-picker').each(function () {
