@@ -16,7 +16,7 @@ def user_profile(request):
         form = UserProfileForm(request.POST, instance=request.user.profile)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/diary/')
+            return HttpResponseRedirect('/diary/%s' % request.user.id)
     else:
         user = request.user
         profile = user.profile

@@ -12,4 +12,4 @@ class DiaryEntry(models.Model):
     notes = models.TextField()
 
     def __unicode__(self):
-        return "%s %s" % (self.userprofile.UserProfile, self.entry_date)
+        return "%s %s" % (self.user_profile, self.entry_date)

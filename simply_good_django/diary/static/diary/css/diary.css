@@ -1,9 +1,20 @@
 /* diary page styling */
+#logout-btn-container {
+    padding-top: 20px;
+    text-align: right;
+}
+
+#logout-btn {
+    border: 1px solid #f3b065;
+    color: #f3b065;
+    background: none repeat scroll 0 0 transparent;
+}
+
 #diary-body {
     /*background-color: #f7f7f7;*/
     font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.4) 100%),
-    url("https://unsplash.com/photos/cZhUxIQjILg/download") no-repeat center fixed;
+    /*background: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.6) 100%),*/
+    /*url("http://cdn1.stocksy.com/a/jwB000/z0/45925.jpg") no-repeat center fixed;*/
     background-size: cover;
 }
 
@@ -16,7 +27,6 @@
 
 #diary-header h2 {
     font-size: 50px;
-    padding-top: 20px;
 }
 
 #diary-calendar {
@@ -29,10 +39,13 @@
 
 #diary-contents {
     text-align: left;
-    font-size: 28px;
+    font-size: 32px;
     border: 3px solid #f3b065;
-    border-radius: 25px;
+    border-radius: 20px;
     padding: 20px 0 20px 0;
+    /*background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%,rgba(255,255,255,0.1) 100%),*/
+        /*url("/static/diary/images/teakcuttingboard.jpeg") no-repeat center center fixed;*/
+    /*background-size: cover;*/
 }
 
 .ionicons.ion-plus {
@@ -52,10 +65,6 @@
     margin: 0 auto;
     padding-left: 15px;
     border-top: 1px dotted #f3b065;
-}
-
-#notes-input {
-
 }
 
 .save-diary {

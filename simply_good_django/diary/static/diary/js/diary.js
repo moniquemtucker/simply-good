@@ -43,26 +43,36 @@ $(document).ready(function() {
 //        }
 //    });
 //
-//    function addPortion (foodId) {
-//        $.ajax({
-//            type: "POST",
-//            url: "/diary/",
-//            data: {"foodId": foodId, "vote": "up"},
-//            success: function (data) {
-//                $("#blog-vote-up-" + foodId).show();
-//                $("#blog-vote-down-" + foodId).hide();
-//                $("#upvotes").html(data.votes)
-//            }
-//        });
-//        return false;
-//}
-//
-//    $(".add-portion-whole-foods").click(function () {
-//        var foodId = parseInt(this.id.split("-")[3]);
-//        if (this.id.split("-")[2] === "add") {
-//            return addPortion(foodId);
-//        }
-//    });
+
+    // adding ajax request
+    function addDate(date, userId) {
+        	$.ajax({
+                "method": "GET",
+                "url": "/diary/get_date",
+                "data": {"date": date, "userId": userId},
+                "success": function (data) {
+                }
+            });
+    }
+
+    // event handler for changing date and ajax request
+    $("#left-cal").click(function () {
+        var date = dateGroom();
+        var userId = getUserId();
+        return addDate(date, userId);
+    });
+
+    $("#right-cal").click(function () {
+        var date = dateGroom();
+        var userId = getUserId();
+        return addDate(date, userId);
+    });
+
+    $("#date-btn").click(function () {
+        var date = dateGroom();
+        var userId = getUserId();
+        return addDate(date, userId);
+    });
 
     //draws portion elements on click
     $(".add-portion-wf").click(function () {
@@ -74,22 +84,50 @@ $(document).ready(function() {
     //TO DO: add a Python Counter() and an if statement to format; pop ups for goals achieved
 
     //capture number of portion elements
-    var wf_total = document.getElementsByClassName('wf-portion').length;
-    var pf_total = document.getElementsByClassName('pf-portion').length;
-    var notes_total = document.getElementById("notes").value;
+    function portionCount() {
+        wf_total = document.getElementsByClassName('wf-portion').length;
+        pf_total = document.getElementsByClassName('pf-portion').length;
+        notes_total = document.getElementById("notes").value;
+    }
+
+    //extract user pk from current url
+    function getUserId () {
+        var url = window.location,
+        splitUrl = url.toString().split("/");
+        return splitUrl[4];
+    }
 
     //capture date information and turn into ISO format
-    var active_date = document.getElementById('date-cal').innerHTML;
-    var active_year= document.getElementById('year-cal').innerHTML;
-    var active_date_array = active_date.split(" ");
-    if (active_date_array[1].length > 3){
-        var active_day = active_date_array[1].substring(0, 2);
-    }
-    else {
-        var active_day = active_date_array[1].substring(0, 1);
-    }
+    function dateGroom() {
+        var active_date = document.getElementById('date-cal').innerHTML;
+        var active_year = document.getElementById('year-cal').innerHTML;
+        var active_date_array = active_date.split(" ");
+        var active_month = active_date_array[0];
+        if (active_date_array[1].length > 3) {
+            var active_day = active_date_array[1].substring(0, 2);
+        }
+        else {
+            var active_day = "0" + active_date_array[1].substring(0, 1);
+        }
+        var monthmatch = {
+            January: "01",
+            February: "02",
+            March: "03",
+            April: "04",
+            May: "05",
+            June: "06",
+            July: "07",
+            August: "08",
+            September: "09",
+            October: 10,
+            November: 11,
+            December: 12
+        };
 
-
+        var monthnum = monthmatch[active_month];
+        // TO DO --- determine if date needs to be a particular data type
+        return active_year + "/" + monthnum + "/" + active_day
+    }
     // test calendar
     $('.date-picker').each(function () {
         var $datepicker = $(this),
