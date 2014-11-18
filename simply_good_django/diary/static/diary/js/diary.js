@@ -13,69 +13,93 @@
 
 $(document).ready(function() {
     //ajax to add portion
-//    function getCookie(name) {
-//        var cookieValue = null;
-//        if (document.cookie && document.cookie != '') {
-//            var cookies = document.cookie.split(';');
-//            for (var i = 0; i < cookies.length; i++) {
-//                var cookie = jQuery.trim(cookies[i]);
-//                // Does this cookie string begin with the name we want?
-//                if (cookie.substring(0, name.length + 1) == (name + '=')) {
-//                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-//                    break;
-//                }
-//            }
-//        }
-//        return cookieValue;
-//    }
-//    var csrftoken = getCookie('csrftoken');
-//
-//    function csrfSafeMethod(method) {
-//        // these HTTP methods do not require CSRF protection
-//        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-//    }
-//
-//    $.ajaxSetup({
-//        beforeSend: function(xhr, settings) {
-//            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-//                xhr.setRequestHeader("X-CSRFToken", csrftoken);
-//            }
-//        }
-//    });
-//
-
-    // adding ajax request
-    function addDate(date, userId) {
-        	$.ajax({
-                "method": "GET",
-                "url": "/diary/get_date",
-                "data": {"date": date, "userId": userId},
-                "success": function (data) {
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
                 }
-            });
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+
+    //ajax request for date information
+    function addDate(date, userId) {
+        $.ajax({
+            method: "GET",
+            url: "/diary/get_date",
+            data: {"date": date, "userId": userId},
+            success: function (res) {
+                //if date is not equal to today, get rest of data and update DOM
+                if (res.entry_date !== date) {
+                    for (i = 0; i < res.whole_foods; i++) {
+                        $("#diary-wf").append("<li><span class='ionicons ion-ios7-tennisball-outline wf-portion'></span></li>");
+                    }
+                    for (i = 0; i < res.processed_foods; i++) {
+                        $("#diary-pf").append("<li><span class='ionicons ion-ios7-tennisball-outline pf-portion'></span></li>");
+                    }
+                    // how do you print the notes value here??
+                    $("textarea#notes").val(res.notes);
+                }
+            }
+        });
+    }
+    // ajax request for posting diary info
+    function postItems() {
+        $.ajax({
+            "method": "POST",
+            "url": "/diary/post_items",
+            "data": {  },
+            "success": function (res) {
+
+            }
+        });
     }
 
     // event handler for changing date and ajax request
-    $("#left-cal").click(function () {
-        var date = dateGroom();
-        var userId = getUserId();
-        return addDate(date, userId);
-    });
+//    $("#left-cal").click(function () {
+//        var date = dateGroom();
+//        var userId = getUserId();
+//        return addDate(date, userId);
+//    });
 
-    $("#right-cal").click(function () {
-        var date = dateGroom();
-        var userId = getUserId();
-        return addDate(date, userId);
-    });
+//    $("#right-cal").click(function () {
+//        var date = dateGroom();
+//        var userId = getUserId();
+//        return addDate(date, userId);
+//    });
 
-    $("#date-btn").click(function () {
-        var date = dateGroom();
-        var userId = getUserId();
-        return addDate(date, userId);
-    });
+//    $("#date-btn").click(function () {
+//        var date = dateGroom();
+//        var userId = getUserId();
+//        return addDate(date, userId);
+//    });
+
+    // event handler for diary data
 
     //draws portion elements on click
     $(".add-portion-wf").click(function () {
+        //send ajax POST, callback will append the li to the ul parent element
         $("#diary-wf").append("<li><span class='ionicons ion-ios7-tennisball-outline wf-portion'></span></li>");
     });
     $(".add-portion-pf").click(function () {
@@ -119,15 +143,16 @@ $(document).ready(function() {
             July: "07",
             August: "08",
             September: "09",
-            October: 10,
-            November: 11,
-            December: 12
+            October: "10",
+            November: "11",
+            December: "12"
         };
 
         var monthnum = monthmatch[active_month];
         // TO DO --- determine if date needs to be a particular data type
-        return active_year + "/" + monthnum + "/" + active_day
+        return active_year + "-" + monthnum + "-" + active_day
     }
+
     // test calendar
     $('.date-picker').each(function () {
         var $datepicker = $(this),
@@ -159,6 +184,10 @@ $(document).ready(function() {
                 date_format = ($input.data('format') ? $input.data('format') : "YYYY/MM/DD");
             if (moment($input.val(), date_format).isValid()) {
                 updateDisplay(moment($input.val(), date_format));
+                // event handler for changing date and ajax request
+                var date = dateGroom();
+                var userId = getUserId();
+                return addDate(date, userId);
             } else {
                 alert('Invalid Date');
             }
@@ -177,8 +206,11 @@ $(document).ready(function() {
             } else if (type == "subtract") {
                 cur_date = cur_date.subtract(date_type, amt);
             }
-
+            // event handler for changing date and ajax request
             updateDisplay(cur_date);
+            var date = dateGroom();
+            var userId = getUserId();
+            return addDate(date, userId);
         });
 
         if ($datepicker.data('keyboard') == true) {

@@ -35,6 +35,7 @@
         <div class="container" id="diary-calendar">
 	      <div class="row">
             <div class="col-sm-4 col-sm-offset-2">
+
               <h2>{{ username }}'s diary  <span class="fa fa-cutlery"></span></h2>
               <hr/>
               <div class="date-picker" data-keyboard="false">
@@ -59,7 +60,7 @@
       <div id="diary-contents">
         <ul id="diary-wf">
           <li>whole foods</li>
-          <li><span class="ionicons ion-plus add-portion-wf" ></span></li>
+          <li><span class="ionicons ion-plus add-portion-wf"></span></li>
         </ul>
         <ul id="diary-pf">
           <li>processed foods</li>
@@ -73,7 +74,7 @@
       </div>
 
     <div id="diary-footer">
-      <a href="#"><span class="ionicons ion-home"></span></a>
+      <a href="/diary/{{ user_profile_id }}"><span class="ionicons ion-home"></span></a>
       <a href="#"><span class="ionicons ion-help-circled"></span></a>
       <a href="#"><span class="ionicons ion-stats-bars"></span></a>
       <a href="/profile/"><span class="fa fa-user"></span></a>
