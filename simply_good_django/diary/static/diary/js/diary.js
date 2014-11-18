@@ -3,14 +3,6 @@
  */
 
 
-//function myFunction() {
-//    var x = document.getElementsByClassName("wf-count");
-//    var wf_total = document.getElementsByClassName('wf-count').length;
-//    var date_value = document.getElementById('date-test').value;
-//    x[0].innerHTML = wf_total;
-//}
-
-
 $(document).ready(function() {
     //ajax to add portion
     function getCookie(name) {
@@ -51,15 +43,22 @@ $(document).ready(function() {
             data: {"date": date, "userId": userId},
             success: function (res) {
                 //if date is not equal to today, get rest of data and update DOM
-                if (res.entry_date !== date) {
+            console.log(res); // log the returned json to the console
+                if (document.getElementsByClassName('wf-portion').length === 0 &&
+                    document.getElementsByClassName('pf-portion').length === 0) {
                     for (i = 0; i < res.whole_foods; i++) {
                         $("#diary-wf").append("<li><span class='ionicons ion-ios7-tennisball-outline wf-portion'></span></li>");
                     }
                     for (i = 0; i < res.processed_foods; i++) {
                         $("#diary-pf").append("<li><span class='ionicons ion-ios7-tennisball-outline pf-portion'></span></li>");
                     }
-                    // how do you print the notes value here??
                     $("textarea#notes").val(res.notes);
+                }
+                else {
+                   $(".wf-portion").remove();
+                   $(".pf-portion").remove();
+                   $('#notes').val('');
+
                 }
             }
         });
