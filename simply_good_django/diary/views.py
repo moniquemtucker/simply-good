@@ -23,8 +23,9 @@ from django.contrib.auth.models import User
 @login_required
 def diary(request, user_profile_id):
     # user_profile_id = request.GET["user_profile_id"]
-    if DiaryEntry.objects.get(entry_date=datetime.date.today()):
-        curr_entry = DiaryEntry.objects.get(entry_date=datetime.date.today())
+    if DiaryEntry.objects.filter(user_profile_id=user_profile_id, entry_date=datetime.date.today()).exists():
+    # if DiaryEntry.objects.get(entry_date=datetime.date.today()):
+        curr_entry = DiaryEntry.objects.get(user_profile_id=user_profile_id, entry_date=datetime.date.today())
     else:
         u = DiaryEntry(user_profile_id=user_profile_id, entry_date=datetime.date.today(), notes="")
         u.save()
@@ -38,15 +39,17 @@ def ajax_get_date(request):
         request_date = request.GET["date"]
         request_user = request.GET["userId"]
 
-        if DiaryEntry.objects.filter(entry_date=request_date).exists():
-            entry = DiaryEntry.objects.get(entry_date=request_date)
+        if DiaryEntry.objects.filter(user_profile_id=request_user, entry_date=request_date).exists():
+            entry = DiaryEntry.objects.get(user_profile_id=request_user, entry_date=request_date)
             response.update({"whole_foods": entry.whole_foods, "processed_foods": entry.processed_foods,
                              "notes": entry.notes})
             return HttpResponse(json.dumps(response), content_type="application/json")
         else:
             new_entry = DiaryEntry(user_profile_id=request_user, entry_date=request_date, notes="")
             new_entry.save()
-            response.update(new_entry)
+            # response.update({new_entry})
+            response.update({"whole_foods": new_entry.whole_foods, "processed_foods": new_entry.processed_foods,
+                             "notes": new_entry.notes})
             return HttpResponse(json.dumps(response), content_type="application/json")
 
         # if DiaryEntry.objects.get(entry_date=request_date):

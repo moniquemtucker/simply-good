@@ -47,10 +47,10 @@ $(document).ready(function() {
                 if (document.getElementsByClassName('wf-portion').length === 0 &&
                     document.getElementsByClassName('pf-portion').length === 0) {
                     for (i = 0; i < res.whole_foods; i++) {
-                        $("#diary-wf").append("<li><span class='ionicons ion-ios7-tennisball-outline wf-portion'></span></li>");
+                        $("#diary-wf").append("<li class='wf-portion'><span class='ionicons ion-ios7-tennisball-outline'></span></li>");
                     }
                     for (i = 0; i < res.processed_foods; i++) {
-                        $("#diary-pf").append("<li><span class='ionicons ion-ios7-tennisball-outline pf-portion'></span></li>");
+                        $("#diary-pf").append("<li class='pf-portion'><span class='ionicons ion-ios7-tennisball-outline'></span></li>");
                     }
                     $("textarea#notes").val(res.notes);
                 }
@@ -98,7 +98,7 @@ $(document).ready(function() {
 
     //draws portion elements on click
     $(".add-portion-wf").click(function () {
-        //send ajax POST, callback will append the li to the ul parent element
+        //TO DO: send ajax POST, callback will append the li to the ul parent element
         $("#diary-wf").append("<li><span class='ionicons ion-ios7-tennisball-outline wf-portion'></span></li>");
     });
     $(".add-portion-pf").click(function () {
