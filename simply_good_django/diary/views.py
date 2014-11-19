@@ -22,9 +22,7 @@ from django.contrib.auth.models import User
 
 @login_required
 def diary(request, user_profile_id):
-    # user_profile_id = request.GET["user_profile_id"]
     if DiaryEntry.objects.filter(user_profile_id=user_profile_id, entry_date=datetime.date.today()).exists():
-    # if DiaryEntry.objects.get(entry_date=datetime.date.today()):
         curr_entry = DiaryEntry.objects.get(user_profile_id=user_profile_id, entry_date=datetime.date.today())
     else:
         u = DiaryEntry(user_profile_id=user_profile_id, entry_date=datetime.date.today(), notes="")
@@ -47,27 +45,29 @@ def ajax_get_date(request):
         else:
             new_entry = DiaryEntry(user_profile_id=request_user, entry_date=request_date, notes="")
             new_entry.save()
-            # response.update({new_entry})
             response.update({"whole_foods": new_entry.whole_foods, "processed_foods": new_entry.processed_foods,
                              "notes": new_entry.notes})
             return HttpResponse(json.dumps(response), content_type="application/json")
-
-        # if DiaryEntry.objects.get(entry_date=request_date):
-        #     entry = DiaryEntry.objects.get(entry_date=request_date)
-        #     # , user_profile=request_user
-        #     response.update({"whole_foods": entry.whole_foods, "processed_foods": entry.processed_foods,
-        #                      "notes": entry.notes})
-        #     return HttpResponse(json.dumps(response), content_type="application/json")
-        # else:
-        #     # user_profile_id = UserProfile.objects.get(user_profile_id=request_user)
-        #     # new_entry = DiaryEntry(user_profile_id=user_profile_id, entry_date=request_date, notes="")
-        #     print("getting to this part!")
-        #     new_entry = DiaryEntry(user_profile_id=request_user, entry_date=request_date, notes="")
-        #     new_entry.save()
-        #     response.update({new_entry})
-        #     return HttpResponse(json.dumps(response), content_type="application/json")
     else:
         return Http404
 
-# def ajax_post_items (request):
-#     if request.is_ajax() and request.POST:
+@login_required
+def ajax_post_items(request):
+    if request.is_ajax() and request.POST:
+        response = {}
+        request_date = request.POST["date"]
+        request_wf = request.POST["wf_total"]
+        request_pf = request.POST["pf_total"]
+        request_notes = request.POST["notes_total"]
+        request_id = request.user.profile.id
+        update_entry = DiaryEntry.objects.get(user_profile_id=request_id, entry_date=request_date)
+        update_entry.whole_foods = request_wf
+        update_entry.processed_foods = request_pf
+        update_entry.notes = request_notes
+        update_entry.save()
+        response["wf_total"] = update_entry.whole_foods
+        response["pf_total"] = update_entry.processed_foods
+        response["notes_total"] = update_entry.notes
+        return HttpResponse(json.dumps(response), content_type="application/json")
+    else:
+        return Http404

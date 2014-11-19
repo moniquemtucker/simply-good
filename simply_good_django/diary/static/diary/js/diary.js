@@ -39,7 +39,7 @@ $(document).ready(function() {
     function addDate(date, userId) {
         $.ajax({
             method: "GET",
-            url: "/diary/get_date",
+            url: "/diary/get_date/",
             data: {"date": date, "userId": userId},
             success: function (res) {
                 //if date is not equal to today, get rest of data and update DOM
@@ -47,11 +47,14 @@ $(document).ready(function() {
                 if (document.getElementsByClassName('wf-portion').length === 0 &&
                     document.getElementsByClassName('pf-portion').length === 0) {
                     for (i = 0; i < res.whole_foods; i++) {
-                        $("#diary-wf").append("<li class='wf-portion'><span class='ionicons ion-ios7-tennisball-outline'></span></li>");
+                        $("#diary-wf").append("<li class='wf-portion'>" +
+                            "<span class='ionicons ion-ios7-tennisball-outline'></span></li>");
                     }
                     for (i = 0; i < res.processed_foods; i++) {
-                        $("#diary-pf").append("<li class='pf-portion'><span class='ionicons ion-ios7-tennisball-outline'></span></li>");
+                        $("#diary-pf").append("<li class='pf-portion'>" +
+                            "<span class='ionicons ion-ios7-tennisball-outline'></span></li>");
                     }
+                    $('textarea#notes').val('');
                     $("textarea#notes").val(res.notes);
                 }
                 else {
@@ -64,54 +67,71 @@ $(document).ready(function() {
         });
     }
     // ajax request for posting diary info
-    function postItems() {
+    function postItems(date, wf_total, pf_total, notes_total) {
         $.ajax({
             "method": "POST",
-            "url": "/diary/post_items",
-            "data": {  },
+            "url": "/diary/post_items/",
+            "data": {"date":date, "wf_total":wf_total, "pf_total":pf_total, "notes_total": notes_total},
             "success": function (res) {
 
             }
         });
     }
 
-    // event handler for changing date and ajax request
-//    $("#left-cal").click(function () {
-//        var date = dateGroom();
-//        var userId = getUserId();
-//        return addDate(date, userId);
-//    });
-
-//    $("#right-cal").click(function () {
-//        var date = dateGroom();
-//        var userId = getUserId();
-//        return addDate(date, userId);
-//    });
-
-//    $("#date-btn").click(function () {
-//        var date = dateGroom();
-//        var userId = getUserId();
-//        return addDate(date, userId);
-//    });
-
     // event handler for diary data
 
     //draws portion elements on click
-    $(".add-portion-wf").click(function () {
-        //TO DO: send ajax POST, callback will append the li to the ul parent element
-        $("#diary-wf").append("<li><span class='ionicons ion-ios7-tennisball-outline wf-portion'></span></li>");
-    });
-    $(".add-portion-pf").click(function () {
-        $("#diary-pf").append("<li><span class='ionicons ion-ios7-tennisball-outline pf-portion'></span></li>");
-    });
+//    $(".add-portion-wf").click(function () {
+//        //TO DO: send ajax POST, callback will append the li to the ul parent element
+//        $("#diary-wf").append("<li class='wf-portion'>" +
+//            "<span class='ionicons ion-ios7-tennisball-outline'></span></li>");
+//    });
+
+//    $(".add-portion-pf").click(function () {
+//        $("#diary-pf").append("<li class='pf-portion'>" +
+//            "<span class='ionicons ion-ios7-tennisball-outline'></span></li>");
+//    });
+
     //TO DO: add a Python Counter() and an if statement to format; pop ups for goals achieved
 
     //capture number of portion elements
-    function portionCount() {
-        wf_total = document.getElementsByClassName('wf-portion').length;
-        pf_total = document.getElementsByClassName('pf-portion').length;
-        notes_total = document.getElementById("notes").value;
-    }
+
+    (function(){
+
+//        function portionCount() {
+//            var wf_total = document.getElementsByClassName('wf-portion').length;
+//            var pf_total = document.getElementsByClassName('pf-portion').length;
+//            var notes_total = document.getElementById("notes").value;
+//            return (wf_total, pf_total, notes_total);
+//        }
+
+        $(".add-portion-wf").click(function () {
+        //TO DO: send ajax POST, callback will append the li to the ul parent element
+            $("#diary-wf").append("<li class='wf-portion'>" +
+                "<span class='ionicons ion-ios7-tennisball-outline'></span></li>");
+            var date = dateGroom();
+            var wf_total = document.getElementsByClassName('wf-portion').length;
+            var pf_total = document.getElementsByClassName('pf-portion').length;
+            var notes_total = document.getElementById("notes").value;
+            return postItems(date, wf_total, pf_total, notes_total);
+        });
+        $(".add-portion-pf").click(function () {
+            $("#diary-pf").append("<li class='pf-portion'>" +
+                "<span class='ionicons ion-ios7-tennisball-outline'></span></li>");
+            var date = dateGroom();
+            var wf_total = document.getElementsByClassName('wf-portion').length;
+            var pf_total = document.getElementsByClassName('pf-portion').length;
+            var notes_total = document.getElementById("notes").value;
+            return postItems(date, wf_total, pf_total, notes_total);
+        });
+        $( "#notes" ).change(function() {
+            var date = dateGroom();
+            var wf_total = document.getElementsByClassName('wf-portion').length;
+            var pf_total = document.getElementsByClassName('pf-portion').length;
+            var notes_total = document.getElementById("notes").value;
+            return postItems(date, wf_total, pf_total, notes_total);
+        });
+    })();
 
     //extract user pk from current url
     function getUserId () {

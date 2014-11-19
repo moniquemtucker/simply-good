@@ -7,7 +7,7 @@ from diary import views
 urlpatterns = patterns('',
     url(r'^(?P<user_profile_id>\d+)/$', views.diary, name='diary'),
     url(r'^get_date/$', views.ajax_get_date, name='get_date'),
-    # url(r'^post_items/$', views.ajax_post_items, name='post_items'),
+    url(r'^post_items/$', views.ajax_post_items, name='post_items'),
 
 
     # url(r'^$', views.diary, name='diary'),
