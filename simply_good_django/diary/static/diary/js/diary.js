@@ -44,27 +44,40 @@ $(document).ready(function() {
             success: function (res) {
                 //if date is not equal to today, get rest of data and update DOM
             console.log(res); // log the returned json to the console
-                if (document.getElementsByClassName('wf-portion').length === 0 &&
-                    document.getElementsByClassName('pf-portion').length === 0) {
-                    for (i = 0; i < res.whole_foods; i++) {
+                   $(".wf-portion").remove();
+                   $(".pf-portion").remove();
+                   $('textarea#notes').val("");
+                   for (i = 0; i < res.whole_foods; i++) {
                         $("#diary-wf").append("<li class='wf-portion'>" +
                             "<span class='ionicons ion-ios7-tennisball-outline'></span></li>");
                     }
-                    for (i = 0; i < res.processed_foods; i++) {
+                   for (i = 0; i < res.processed_foods; i++) {
                         $("#diary-pf").append("<li class='pf-portion'>" +
                             "<span class='ionicons ion-ios7-tennisball-outline'></span></li>");
                     }
-                    $('textarea#notes').val('');
-                    $("textarea#notes").val(res.notes);
-                }
-                else {
-                   $(".wf-portion").remove();
-                   $(".pf-portion").remove();
-                   $('#notes').val('');
+                   $("textarea#notes").val(res.notes);
 
                 }
-            }
-        });
+//                if (document.getElementsByClassName('wf-portion').length === 0 &&
+//                    document.getElementsByClassName('pf-portion').length === 0) {
+//                    for (i = 0; i < res.whole_foods; i++) {
+//                        $("#diary-wf").append("<li class='wf-portion'>" +
+//                            "<span class='ionicons ion-ios7-tennisball-outline'></span></li>");
+//                    }
+//                    for (i = 0; i < res.processed_foods; i++) {
+//                        $("#diary-pf").append("<li class='pf-portion'>" +
+//                            "<span class='ionicons ion-ios7-tennisball-outline'></span></li>");
+//                    }
+//                    $('textarea#notes').val('');
+//                    $("textarea#notes").val(res.notes);
+//                }
+//                else {
+//                   $(".wf-portion").remove();
+//                   $(".pf-portion").remove();
+//                   $('textarea#notes').val("");
+//
+//                }
+        })
     }
     // ajax request for posting diary info
     function postItems(date, wf_total, pf_total, notes_total) {
