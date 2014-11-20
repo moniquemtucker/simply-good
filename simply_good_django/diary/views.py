@@ -25,10 +25,13 @@ def diary(request, user_profile_id):
     if DiaryEntry.objects.filter(user_profile_id=user_profile_id, entry_date=datetime.date.today()).exists():
         print("it exists!")
         curr_entry = DiaryEntry.objects.get(user_profile_id=user_profile_id, entry_date=datetime.date.today())
+        return render_to_response('diary/base_diary.html', {'user_profile_id': user_profile_id,
+            'username': request.user.username, 'whole_foods': range(1, curr_entry.whole_foods + 1),
+            'processed_foods': range(1, curr_entry.processed_foods + 1), 'notes': curr_entry.notes})
     else:
         u = DiaryEntry(user_profile_id=user_profile_id, entry_date=datetime.date.today(), notes="")
         u.save()
-    return render_to_response('diary/base_diary.html', {'user_profile_id': user_profile_id,
+        return render_to_response('diary/base_diary.html', {'user_profile_id': user_profile_id,
                                                             'username': request.user.username})
 
 @login_required

@@ -34,11 +34,14 @@
  #diary-calendar {
     text-align: center;
     font-size: 22px;
-    font-variant: small-caps;
     font-weight: 600;
     padding: 20px 0 0 0;
     margin: 0 auto;
     width: 60%;
+}
+
+#weekday-cal, #date-cal, #year-cal {
+    font-variant: small-caps;
 }
 
 /*#diary-calendar {*/
