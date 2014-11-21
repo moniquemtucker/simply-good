@@ -26,7 +26,8 @@ def user_profile(request):
     args.update(csrf(request))
 
     args['form'] = form
-
+    args['username'] = request.user.username
+    args['user_profile_id'] = request.user.profile.id
     return render_to_response('profile.html', args)
 
 

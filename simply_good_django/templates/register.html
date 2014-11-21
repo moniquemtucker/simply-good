@@ -12,7 +12,7 @@
      </div>
     <div class="modal-body">
     {% for field in form %}
-    {{field.error}}
+    <p>{{field.error}}</p>
     {% endfor %}
 <form action="" method="post">
     {% csrf_token %}

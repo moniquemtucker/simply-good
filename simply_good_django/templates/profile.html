@@ -1,10 +1,12 @@
-{% extends 'basetwo.html' %}
+{% extends 'diary/base_diary.html' %}
 
 {% block title %} simply good. profile page. {% endblock title %}
 
 {% block content %}
 
-<h2>simply good profile page</h2>
+<div id="profile-style">
+
+<h2>{{ username }}'s profile page</h2>
 
 <p>Please fill out the following fields to complete your profile:</p>
 
@@ -17,5 +19,6 @@
        {{ form.as_p }}
      <input type="submit" value="Update" class="btn btn-success" />
     </form>
+</div>
 
 {% endblock content %}

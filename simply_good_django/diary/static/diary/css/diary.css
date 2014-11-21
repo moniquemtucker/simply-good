@@ -152,6 +152,16 @@
     font-size: 16px;
 }
 
+#profile-style {
+    color: #f3b065;
+    background-color: #fff;
+    width: 70%;
+    margin: 0 auto;
+    border: 3px solid #f3b065;
+    border-radius: 20px;
+    padding: 10px 0 10px 0;
+}
+
 /* test calendar */
 /*@import url(http://fonts.googleapis.com/css?family=Roboto:400,300);*/
 /*@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);*/
