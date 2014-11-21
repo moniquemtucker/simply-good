@@ -23,15 +23,15 @@
 {% endif %}
 
 {% if form.errors %}
-<p class="alert alert-error">Invalid username/password</p>
+<p class="alert alert-error">invalid username/password</p>
 {% endif %}
 
 <form action="/authenticate/" method="post">
 {% csrf_token %}
-<!--<label for="username">Username:</label>-->
-<input type="text" name="username" value="" id="username" placeholder="Enter username">
-<!--<label for="password">Password:</label>-->
-<input type="password" name="password" value="" id="password" placeholder="Enter password">
+<label for="username"></label>
+<input type="text" name="username" value="" id="username" placeholder="enter username" class="login-form-field">
+<label for="password"></label>
+<input type="password" name="password" value="" id="password" placeholder="enter password" class="login-form-field">
 <p id="login-login-btn"><input type="submit" class="btn btn-warning" value="login" /></p>
 </form>
     </div>

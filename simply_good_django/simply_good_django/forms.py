@@ -15,8 +15,8 @@ class SGRegisterForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(SGRegisterForm, self).__init__(*args, **kwargs)
         self.fields['email'].label = "Email"
-        self.fields.get('username').widget = forms.TextInput(attrs={'placeholder': 'Enter your username'})
-        self.fields.get('email').widget = forms.TextInput(attrs={'placeholder': 'Enter your email address'})
+        self.fields.get('username').widget = forms.TextInput(attrs={'placeholder': 'create a username'})
+        self.fields.get('email').widget = forms.TextInput(attrs={'placeholder': 'enter your email address'})
 
     def __unicode__(self):
         return self.username

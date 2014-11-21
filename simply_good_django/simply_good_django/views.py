@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf
@@ -36,6 +36,7 @@ def register_success(request):
 
 
 def register_error(request):
+    # return render_to_response('register_error.html')
     return render_to_response('register_error.html')
 
 
@@ -58,11 +59,14 @@ def authenticate(request):
 
 
 def login_success(request):
-    return render_to_response('login_success.html', {'username': request.user.username})
+    # return render_to_response('login_success.html', {'username': request.user.username})
+    return HttpResponseRedirect('/diary/%s' % request.user.profile.id)
 
 
 def login_invalid(request):
-    return render_to_response('login_invalid.html')
+    # return render_to_response('login_invalid.html')
+    messages.error(request, "Invalid username/password.")
+    return render_to_response('login.html', context_instance=RequestContext(request))
 
 
 def logout(request):

@@ -46,7 +46,8 @@
 
 .home-main h4 {
     padding-top: 30px;
-    font-size: 26px;
+    font-size: 30px;
+    text-align: center;
 }
 
 .home-main h4 a {
@@ -147,3 +148,24 @@
     background: none repeat scroll 0 0 #FFF;
 }
 
+.form-fields {
+    font-size: 20px;
+    padding: 10px 0 10px 10px;
+}
+
+.form-fields label {
+    font-weight: 100;
+}
+
+.form-fields span {
+    padding-right: 5px;
+}
+
+#signup-submit-btn {
+    margin-left: 10px;
+}
+
+.login-form-field {
+    font-size: 18px;
+    margin: 5px 0 5px 0;
+}
