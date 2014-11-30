@@ -14,6 +14,8 @@ from diary.models import DiaryEntry
 from userprofile.models import UserProfile
 from django.contrib.auth.models import User
 
+from chartit import DataPool, Chart
+from chartit.chartdata import DataPool
 
 # Create your views here.
 
@@ -74,3 +76,8 @@ def ajax_post_items(request):
         return HttpResponse(json.dumps(response), content_type="application/json")
     else:
         return Http404
+
+
+@login_required
+def trends(request, user_profile_id):
+    return render_to_response('diary/trends.html', {'user_profile_id': request.user.profile.id})

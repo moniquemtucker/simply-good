@@ -24,6 +24,7 @@ STYLING
 -- Change where the logout buttons are
 -- Change the profile layout
 -- Change the diary layout
+-- Responsive design
 
 ADDITIONAL
 -- Add description of app on the homepage
