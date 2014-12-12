@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     # 'person',
     'diary',
     'userprofile',
+    'chartkick',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -94,9 +95,10 @@ STATIC_URL = '/static/'
 
 # STATIC_ROOT = '/staticfiles/'
 
-
+import chartkick
 STATICFILES_DIRS = (
     STATIC_PATH,
+    chartkick.js(),
 )
 
 TEMPLATE_DIRS = (
