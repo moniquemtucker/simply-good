@@ -128,6 +128,17 @@ $(document).ready(function() {
             var notes_total = document.getElementById("notes").value;
             return postItems(date, wf_total, pf_total, notes_total);
         });
+
+        $(".remove-portion-wf").click(function () {
+        //TO DO: send ajax POST, callback will append the li to the ul parent element
+            $(".wf-portion").last().remove();
+            var date = dateGroom();
+            var wf_total = document.getElementsByClassName('wf-portion').length;
+            var pf_total = document.getElementsByClassName('pf-portion').length;
+            var notes_total = document.getElementById("notes").value;
+            return postItems(date, wf_total, pf_total, notes_total);
+        });
+
         $(".add-portion-pf").click(function () {
             $("#diary-pf").append("<li class='pf-portion'>" +
                 "<span class='ionicons ion-ios7-tennisball-outline'></span></li>");
@@ -137,6 +148,16 @@ $(document).ready(function() {
             var notes_total = document.getElementById("notes").value;
             return postItems(date, wf_total, pf_total, notes_total);
         });
+
+        $(".remove-portion-pf").click(function () {
+            $(".pf-portion").last().remove();
+            var date = dateGroom();
+            var wf_total = document.getElementsByClassName('wf-portion').length;
+            var pf_total = document.getElementsByClassName('pf-portion').length;
+            var notes_total = document.getElementById("notes").value;
+            return postItems(date, wf_total, pf_total, notes_total);
+        });
+
         $( "#notes" ).change(function() {
             var date = dateGroom();
             var wf_total = document.getElementsByClassName('wf-portion').length;

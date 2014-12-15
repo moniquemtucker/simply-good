@@ -111,7 +111,7 @@
 
 /*}*/
 
-.ionicons.ion-plus {
+.ionicons.ion-plus, .ionicons.ion-minus {
     cursor: pointer;
 }
 
